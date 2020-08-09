@@ -1,0 +1,37 @@
+
+server:
+  port: 1001
+spring:
+  application:
+    name: GATEWAY
+  cloud:
+    gateway:
+      routes:
+#        - id: neo_route
+#          uri: http://localhost:1201
+#          predicates:
+#            - Method=GET
+      discovery:
+        locator:
+          enabled: true
+
+          filters:
+#            - Authorize=true
+            - StripPrefix=1  #去掉URL路径中的部分前缀（这里去掉一个前缀）
+          lower-case-service-id: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:123456@localhost:1000/eureka/      #服务注册中心地址，含有BASIC认证的用户名和密码
+  instance:
+    prefer-ip-address: true  #将IP注册到服务注册中心
+#    leaseRenewwalIntervalInSeconds: 6 #心跳时间，服务续约间隔时间
+#    leaseExpirationInSeconds: 30 #发呆时间，服务续约到期时间
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug

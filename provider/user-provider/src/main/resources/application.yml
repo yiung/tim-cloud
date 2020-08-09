@@ -1,0 +1,19 @@
+
+server:
+  port: 1101
+spring:
+  application:
+    name: USER-PROVIDER
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:123456@localhost:1000/eureka/      #服务注册中心地址，含有BASIC认证的用户名和密码
+  instance:
+    prefer-ip-address: true  #将IP注册到服务注册中心
+
+#放开所有节点
+#management:
+#  endpoint:
+#    web:
+#      exposure:
+#        include: '*'
