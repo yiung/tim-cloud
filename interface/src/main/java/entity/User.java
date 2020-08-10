@@ -1,4 +1,4 @@
-package com.yiung.userprovider.entity;
+package entity;
 
 public class User {
     private Integer id;

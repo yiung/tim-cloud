@@ -1,6 +1,6 @@
-package com.yiung.userprovider.api;
+package api;
 
-import com.yiung.userprovider.entity.User;
+import entity.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 

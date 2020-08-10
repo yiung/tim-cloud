@@ -1,6 +1,6 @@
 package com.yiung.workbench.controller;
 
-import com.yiung.userprovider.entity.User;
+import entity.User;
 import com.yiung.workbench.Feign.UserFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

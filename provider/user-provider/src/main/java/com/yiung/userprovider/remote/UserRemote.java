@@ -1,7 +1,7 @@
 package com.yiung.userprovider.remote;
 
-import com.yiung.userprovider.api.UserApi;
-import com.yiung.userprovider.entity.User;
+import api.UserApi;
+import entity.User;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
