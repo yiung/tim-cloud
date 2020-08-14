@@ -1,4 +1,4 @@
-package com.yiung.wechat.comtroller;
+package com.yiung.wechat.controller;
 
 import com.yiung.config.center.params.ReqParams;
 import com.yiung.config.center.params.ResponseVo;
@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import vo.LoginVo;
 import wechat.WechatLogin;
 
+/**
+ * WeChat authentication interface 2020/08/14 15:49
+ * @author yiung
+ * @version V1.0
+ *
+ *
+ **/
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -18,19 +25,22 @@ public class AuthController {
     private UserFeign userFeign;
 
     /**
-     * @param reqParams
-     * */
+     * Register or login method 2020/08/14 15:49
+     * @author yiung
+     * @param reqParams login information
+     * @return ResponseVo
+     **/
     @RequestMapping(value = "/login")
     public ResponseVo login(@RequestBody ReqParams reqParams) {
         User user = reqParams.getEntity(User.class);
+        @SuppressWarnings("unchecked")
         ResponseEntity<LoginEntity> responseEntity = WechatLogin.login(LoginEntity.class, reqParams.getJSONObject());
 
         LoginEntity loginEntity = responseEntity.getBody();
-        System.out.println("loginEntity:"+loginEntity.getErrmsg());
-        String openId = loginEntity.getOpenid();
+        String openId = loginEntity == null ? "" : loginEntity.getOpenid();
         int resultCode;
         LoginVo loginVo = new LoginVo();
-        if(openId!= null && openId != ""){
+        if(openId!= null && !"".equals(openId)){
             user.setWechatOpenId(loginEntity.getOpenid());
             resultCode = userFeign.processUserLogin(user);
         }else {
