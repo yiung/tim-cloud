@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: USER-PROVIDER
+  datasource:
+    username:
+    password:
+    url: jdbc:mysql://aaa.sql.tencentcdb.com/ttt?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
 eureka:
   client:
     service-url:
