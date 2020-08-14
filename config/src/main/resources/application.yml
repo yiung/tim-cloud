@@ -1,0 +1,11 @@
+server:
+  port: 1002
+spring:
+  application:
+    name: CONFIG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:123456@localhost:1000/eureka/
+  instance:
+    prefer-ip-address: true #将IP注册到服务注册中心
