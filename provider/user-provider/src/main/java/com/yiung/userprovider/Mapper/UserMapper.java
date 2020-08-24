@@ -1,11 +1,10 @@
 package com.yiung.userprovider.Mapper;
 
-import entity.User;
-import org.apache.ibatis.annotations.Insert;
+import com.yiung.api.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestBody;
 import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
@@ -17,10 +16,16 @@ public interface UserMapper extends BaseMapper<User> {
     public List<User> getUserList();
 
     @Select("select count(1) from t_user where username = #{user.username}")
-    public Integer getUserNumberByUsername(@RequestBody User user);
+    public Integer getUserNumberByUsername(@Param("user")User user);
+
+    @Select("select * from t_user where username = #{username}")
+    public User getUserByUsername(@Param("username")String username);
 
     @Select("select user_code,username,password from t_user where username = #{user.username} and password = #{user.password}")
-    public List<User> getUserByUsernameAndPassword(@RequestBody User user);
+    public List<User> getUserByUsernameAndPassword(@Param("user") User user);
+
+    @Select("select * from t_user where username = #{user.wechat_open_id}")
+    public User getUserByOpenId(@Param("user") User user);
 
 
 }

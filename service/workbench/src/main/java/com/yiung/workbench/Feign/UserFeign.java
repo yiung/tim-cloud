@@ -1,6 +1,7 @@
 package com.yiung.workbench.Feign;
 
-import api.UserApi;
+
+import com.yiung.api.api.UserApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(name = "user-provider")

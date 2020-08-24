@@ -8,7 +8,6 @@
         <version>1.0</version>
     </parent>
 
-<!--    <groupId>com.yiung</groupId>-->
     <artifactId>user-provider</artifactId>
     <version>1.0</version>
     <name>user-provider</name>
@@ -46,13 +45,13 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 </project>
