@@ -5,9 +5,9 @@ spring:
   application:
     name: USER-PROVIDER
   datasource:
-    username:
-    password:
-    url: jdbc:mysql://aaa.sql.tencentcdb.com/ttt?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: timtest
+    password: test123#
+    url: jdbc:mysql://gz-cdb-rgl276ny.sql.tencentcdb.com:62592/tim_chat?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
     driverClassName: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
@@ -15,6 +15,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://user:123456@localhost:1000/eureka/      #服务注册中心地址，含有BASIC认证的用户名和密码
+#      defaultZone: http://user:123456@106.14.135.154:1000/eureka/      #服务注册中心地址，含有BASIC认证的用户名和密码
   instance:
     prefer-ip-address: true  #将IP注册到服务注册中心
 
