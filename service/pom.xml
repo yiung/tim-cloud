@@ -15,15 +15,15 @@
     <name>service</name>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.yiung</groupId>-->
-<!--            <artifactId>user-provider</artifactId>-->
-<!--            <version>1.0</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.yiung</groupId>
-            <artifactId>interface</artifactId>
+            <artifactId>api</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.yiung</groupId>
+            <artifactId>config-redis</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
@@ -33,18 +33,18 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.yiung</groupId>
-            <artifactId>config</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.yiung</groupId>-->
-<!--            <artifactId>provider</artifactId>-->
+<!--            <artifactId>config-center</artifactId>-->
 <!--            <version>1.0</version>-->
 <!--            <scope>compile</scope>-->
 <!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -60,7 +60,7 @@
 
     <modules>
         <module>workbench</module>
-        <module>wechat</module>
+        <module>wechat-service</module>
     </modules>
 
 

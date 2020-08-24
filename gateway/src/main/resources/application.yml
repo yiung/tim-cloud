@@ -16,7 +16,7 @@ spring:
           enabled: true
 
           filters:
-#            - Authorize=true
+            - Authorize=true
             - StripPrefix=1  #去掉URL路径中的部分前缀（这里去掉一个前缀）
           lower-case-service-id: true
 

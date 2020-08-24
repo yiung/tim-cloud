@@ -3,25 +3,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>cloud-system</artifactId>
+        <artifactId>service</artifactId>
         <groupId>com.yiung</groupId>
         <version>1.0</version>
     </parent>
-
-    <artifactId>gateway</artifactId>
+    <groupId>com.yiung</groupId>
+    <artifactId>wechat-service</artifactId>
     <version>1.0</version>
-    <name>gateway</name>
-    <description>Spring Gateway</description>
-    <packaging>jar</packaging>
+    <name>wechat-service</name>
+    <description>wechat-service</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,15 +34,15 @@
             </exclusions>
         </dependency>
 <!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-web</artifactId>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
 <!--        </dependency>-->
-
-        <!-- 临时导入，为了不多启动服务auth，临时将鉴权放在网关-->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
-            <groupId>com.yiung</groupId>
-            <artifactId>config-redis</artifactId>
-            <version>1.0</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

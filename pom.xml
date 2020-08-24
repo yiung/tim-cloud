@@ -12,7 +12,9 @@
         <module>provider</module>
         <module>service</module>
         <module>tools</module>
-        <module>interface</module>
+        <module>api</module>
+        <module>config</module>
+        <module>gateway</module>
     </modules>
 
     <parent>
@@ -27,21 +29,22 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
-<!--        <fastjson.version>1.2.73</fastjson.version>-->
+        <fastjson.version>1.2.73</fastjson.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
-<!--        <feign-jackson.version>8.18.0</feign-jackson.version>-->
+        <feign-jackson.version>8.18.0</feign-jackson.version>
+        <feign.form.version>3.3.0</feign.form.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.73</version>
-        </dependency>
-        <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-jackson</artifactId>
-            <version>8.18.0</version>
-        </dependency>
-    </dependencies>
+<!--    <dependencies>-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>fastjson</artifactId>-->
+<!--            <version>1.2.73</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.netflix.feign</groupId>-->
+<!--            <artifactId>feign-jackson</artifactId>-->
+<!--            <version>8.18.0</version>-->
+<!--        </dependency>-->
+<!--    </dependencies>-->
 </project>
