@@ -1,6 +1,7 @@
 package com.yiung.api.vo;
 
 
+import com.yiung.api.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,5 @@ public class LoginVo {
     private String sessionKey;
     private String token;
     private Integer roomCode;
+    private User user;
 }

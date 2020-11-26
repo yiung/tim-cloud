@@ -24,8 +24,8 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("select user_code,username,password from t_user where username = #{user.username} and password = #{user.password}")
     public List<User> getUserByUsernameAndPassword(@Param("user") User user);
 
-    @Select("select * from t_user where username = #{user.wechat_open_id}")
-    public User getUserByOpenId(@Param("user") User user);
+    @Select("select * from t_user where wechat_open_id = #{wechatOpenId}")
+    public User getUserByOpenId(@Param("wechatOpenId") String wechatOpenId);
 
 
 }

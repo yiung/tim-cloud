@@ -168,20 +168,20 @@ public class RedisConnect extends CachingConfigurerSupport {
             String evn = System.getProperty("spring.profiles.active");
             if (!StringUtils.isEmpty(evn)) {
                 if ("prod".equals(evn)){
-                    factory.setDatabase(0);
+                    factory.setDatabase(170);
                     factory.setHostName(host_prod);
                     factory.setPassword(password_prod);
                 }else if ("test".equals(evn)){
-                    factory.setDatabase(1);
+                    factory.setDatabase(171);
                     factory.setHostName(host_prod);
                     factory.setPassword(password_prod);
                 }else if ("uat".equals(evn)){
-                    factory.setDatabase(2);
+                    factory.setDatabase(172);
                     factory.setHostName(host_uat);
                     factory.setPassword(password_uat);
                 }
             } else {
-                factory.setDatabase(1);
+                factory.setDatabase(171);
                 factory.setHostName(host);
                 factory.setPassword(password);
             }

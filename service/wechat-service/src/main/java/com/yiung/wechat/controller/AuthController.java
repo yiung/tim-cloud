@@ -7,6 +7,7 @@ import com.yiung.config.configcenter.params.ReqParams;
 import com.yiung.config.configcenter.params.ResponseVo;
 import com.yiung.config.configredis.core.RedisKeyManage;
 import com.yiung.config.configredis.core.RedisOpts;
+import com.yiung.tools.entity.auth.TokenEntity;
 import com.yiung.tools.wechat.DecryptionUtil;
 import com.yiung.tools.wechat.WechatLogin;
 import com.yiung.wechat.Feign.UserFeign;
@@ -31,6 +32,9 @@ import com.yiung.tools.token.TokenUtil;
 public class AuthController {
     @Autowired
     private UserFeign userFeign;
+
+    @Autowired
+    private RedisOpts redisOpts;
 
     /**
      * Register or login method 2020/08/14 15:49
@@ -67,7 +71,7 @@ public class AuthController {
 //            loginVo.setWechatUnionId(loginEntity.getUnionid());
             loginVo.setSessionKey(loginEntity.getSession_key());
 //            loginVo.setToken("abc");
-            loginVo.setToken("virtualToken");
+//            loginVo.setToken("virtualToken");
         } else {
 //            loginVo.setUrl("#");
         }
@@ -87,6 +91,9 @@ public class AuthController {
         User user = reqParams.getEntity(User.class);
         System.out.println("user:"+user);
         boolean result = false;
+        if(user == null || user.getWechatOpenId() == null){
+            return new ResponseVo(result);
+        }
         LoginVo loginVo = new LoginVo();
             String encryptedData = user.getEncryptedData();
             String iv = user.getIv();
@@ -101,14 +108,15 @@ public class AuthController {
                 result = userFeign.login(user);
             }
         if(result){
+            User newUser = userFeign.getUserByOpenId(user);
 //            loginVo.setUrl("../login/loginByCode");
             loginVo.setUrl("/pages/index/index");
             loginVo.setCode(0);
+            loginVo.setUser(newUser);
 //            loginVo.setRoomCode(1);
-
-            long redisExpireDate = 3600 * 24 * 7L;
-            RedisOpts redisOpts = new RedisOpts();
-            redisOpts.set(RedisKeyManage.getKey(constant.TOKEN_PRE_KEY,user.getUsername()),TokenUtil.getNewToken(),ExporeTime.TOKEN_WECHAT_MINI_EXPIRE_TIME);
+            TokenEntity token = TokenUtil.getNewToken();
+            redisOpts.set(RedisKeyManage.getKey(constant.TOKEN_PRE_KEY,user.getUsername()),token,ExporeTime.TOKEN_WECHAT_MINI_EXPIRE_TIME);
+            redisOpts.set(RedisKeyManage.getKey(constant.USER_INFO_PRE_KEY,token.getAccessToken()),newUser,ExporeTime.TOKEN_WECHAT_MINI_EXPIRE_TIME);
         } else {
             loginVo.setCode(-1);
             loginVo.setUrl("#");
@@ -128,11 +136,13 @@ public class AuthController {
      **/
     @RequestMapping(value = "/checkLoginStatus")
     public ResponseVo checkLoginStatus(@RequestBody ReqParams reqParams) {
-//        JSONObject jsonObject = reqParams.getJSONObject("token");
-        //暂且返回都是成功，不校验token
+        String token = reqParams.getString("token");
+        //校验token
+        User user = (User) redisOpts.get(RedisKeyManage.getKey(constant.USER_INFO_PRE_KEY,token));
         LoginVo loginVo = new LoginVo();
         loginVo.setCode(0);
-//        loginVo.setToken(jsonObject.getString("token"));
+        loginVo.setUser(user);
+        loginVo.setToken(token);
         return new ResponseVo(loginVo);
     }
 

@@ -13,7 +13,7 @@ public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
 
     private Class<T> clazz;
     static {
-        ParserConfig.getGlobalInstance().addAccept("com.maojia");
+        ParserConfig.getGlobalInstance().addAccept("com.yiung");
     }
 
     public FastJson2JsonRedisSerializer(Class<T> clazz) {

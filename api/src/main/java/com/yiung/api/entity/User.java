@@ -15,6 +15,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+    @Column(name = "user_state")
+    private Integer userState;
+    @Column(name = "audit_state")
+    private Integer auditState;
     @Column(name = "user_code")
     private String userCode;//UC008600010001  UC + 国家代码 + 序号
     @Column(name = "username")
@@ -42,9 +46,6 @@ public class User {
     @Column(name = "create_time")
     private Date createTime;
 
-    @Column(name = "update_time")
-    private Date updateTime;
-
 //    private String city;
 //    private String province;
 
@@ -64,6 +65,4 @@ public class User {
     private String SessionKey;
     @Transient
     private Object userInfo;
-
-
 }

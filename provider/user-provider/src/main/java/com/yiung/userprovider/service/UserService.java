@@ -24,7 +24,7 @@ public class UserService {
             return addUser(user) == 1 ? true : false;
         }else {
             User updateUser = userMapper.getUserByUsername(user.getUsername());
-//            updateUser.setWechatOpenId(user.getWechatOpenId());
+            updateUser.setWechatOpenId(user.getWechatOpenId());
             updateUser.setAvatarUrl(user.getAvatarUrl());
             updateUser.setGender(user.getGender());
             updateUser.setLanguage(user.getLanguage());
@@ -89,6 +89,7 @@ public class UserService {
     }
 
     public User getUserByOpenId(@RequestBody User user){
-        return userMapper.getUserByOpenId(user);
+        User result = userMapper.getUserByOpenId(user.getWechatOpenId());
+        return result;
     }
 }

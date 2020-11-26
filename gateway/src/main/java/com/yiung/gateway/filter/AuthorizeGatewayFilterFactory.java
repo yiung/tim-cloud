@@ -27,6 +27,9 @@ public class AuthorizeGatewayFilterFactory extends AbstractGatewayFilterFactory<
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private RedisOpts redisOpts;
+
     public AuthorizeGatewayFilterFactory() {
         super(Config.class);
     }
@@ -66,10 +69,6 @@ public class AuthorizeGatewayFilterFactory extends AbstractGatewayFilterFactory<
 //                    return resp.writeWith(Flux.just(buffer));
 //                }
 
-
-                String  tokenPreKey = "token";
-                long redisExpireDate = 3600 * 24 * 7L;
-                RedisOpts redisOpts = new RedisOpts();
 //                redisOpts.set(RedisKeyManage.getKey(tokenPreKey,token),token,redisExpireDate);
 
                 //临时

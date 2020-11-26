@@ -19,6 +19,26 @@ eureka:
   instance:
     prefer-ip-address: true  #将IP注册到服务注册中心
 
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+  #    logImpl: org.apache.ibatis.logging.stdout.StdOutImpl
+  typeAliasesPackage: com.yiung.api.entity
+#  mapper配置
+#mapper:
+#  mappers: tk.common.mapper.BasicMapper
+#  identity: MYSQL
+###  mybatis 分页插件使用
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+
+# 打印sql
+logging:
+  level:
+    com.yiung : debug
+
 #放开所有节点
 #management:
 #  endpoint:
